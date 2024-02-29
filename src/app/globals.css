@@ -2,32 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+.circle-icon {
+    @apply flex justify-center items-center p-3 text-black w-[3rem] h-[3rem]
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.generic-tile  {
+    @apply rounded-md px-4 py-2 /*border-[1.75px] border-black*/
+}
+
+.dotted-tile  {
+    @apply rounded-md px-4 py-2 /*border-[1.75px] border-dotted*/ border-gray-700
+}
+
+.suggestion-tile {
+    @apply rounded-md /*border-[1.75px] border-gray-300*/
+}
+
+/* VANILLA CSS WARNING? */
+@keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.fade-in {
+animation: fade-in 0.5s ease forwards;
 }
