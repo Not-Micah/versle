@@ -2,13 +2,39 @@
 
 import React from "react";
 import Nav from "@/components/Nav";
-import Divider from "@/components/Divider";
 import Verse from "@/components/Verse";
 import GuessSection from "@/components/GuessSection";
 import ResultsOverlay from "@/components/ResultsOverlay";
 import { useState, useEffect } from "react";
 
+const getDailyVerse = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/verses", {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch!");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const Home = () => {
+  var correctBook = "";
+  var correctVerse = "";
+  var verse = "";
+
+  getDailyVerse().then(dailyData => {
+    correctBook = dailyData.book;
+    correctVerse = dailyData.location;
+    verse = dailyData.verse;
+    console.log(correctBook, correctVerse, verse)
+  });
+
   const emptyData = [
     { guess: "", percentage: 0, icon: "" },
     { guess: "", percentage: 0, icon: "" },
@@ -27,8 +53,6 @@ const Home = () => {
       return index !== null ? parseInt(index) : 0;
     });
     const [currentGuess, editCurrentGuess] = useState("");
-    const correctBook = "John";
-    const correctVerse = "John 3:16";
   
     const [status, editStatus] = useState(() => {
       if (guessData.some(item => item.guess === correctBook)) {
@@ -74,7 +98,6 @@ const Home = () => {
   return (
     <div className="max-w-[600px] mx-auto my-8">
       <Nav />
-      <Divider />
       <Verse verse="For God so love the world he sent his one and only son so whoever believed in him would not perish but have eternal life." />
       <GuessSection
         status={status}
