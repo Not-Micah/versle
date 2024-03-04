@@ -72,3 +72,25 @@ export interface guessType {
     percentage: number;
     icon: string;
 }
+
+export const percentageToColors = (percentage : number) => {
+    const colorSquares = [];
+    const numberOfTens = Math.floor(percentage / 20);
+
+    for (let i = 0; i < numberOfTens; i++) {
+        colorSquares.push("#7DC884");
+    }
+
+    if (percentage % 10 >= 5) {
+        colorSquares.push("#FF11FF");
+    } else if (percentage % 10 > 0) {
+        colorSquares.push("#135790");
+    }
+
+    const remainingSquares = 5 - colorSquares.length;
+    for (let i = 0; i < remainingSquares; i++) {
+        colorSquares.push("#000000");
+    }
+
+    return colorSquares;
+}

@@ -1,5 +1,5 @@
-'use client'
 import React, { useState, useEffect } from "react";
+import { percentageToColors } from "@/data";
 
 const GuessedTile = ({
   index,
@@ -14,6 +14,9 @@ const GuessedTile = ({
 }) => {
   const [squares, setSquares] = useState<Array<number>>([]);
   const [percentage, editPercentage] = useState(0);
+
+  // Returns list of hex codes
+  const colorList = percentageToColors(percentageDifference);
 
   useEffect(() => {
     const timeoutIds: number[] = [];
@@ -52,10 +55,11 @@ const GuessedTile = ({
       <div className="flex flex-row gap-8">
         <p className="flex-3 w-[5rem]">{guess}</p>
         <div className="flex-5 flex flex-row justify-start items-center gap-5">
-          {squares.map((square, index) => (
+          {squares.map((_, index) => (
             <div
               key={index}
-              className="w-[18px] h-[18px] bg-green-500 rounded-sm fade-in" 
+              className={`w-[18px] h-[18px] rounded-sm fade-in z-0`}
+              style={{ backgroundColor: colorList[index] }} // Modify style
             ></div>
           ))}
         </div>

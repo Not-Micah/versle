@@ -76,11 +76,14 @@ const EntryTile = ({
 
   return (
     <div className="flex flex-row justify-center items-center gap-1 w-full">
-      <div className="">
-        <AutoComplete options={bibleBooks} editCurrentGuess={editCurrentGuess} />
+      <div className="flex-1">
+        <AutoComplete
+          options={bibleBooks}
+          editCurrentGuess={editCurrentGuess}
+        />
       </div>
       <button
-        className="w-full generic-tile uppercase font-bold cursor-pointer duration-300 bg-dark-gray text-white"
+        className="w-1/4 generic-tile uppercase font-bold cursor-pointer duration-300 bg-dark-gray text-white"
         onClick={submitEntry}
       >
         Guess

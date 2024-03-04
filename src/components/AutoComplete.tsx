@@ -4,27 +4,24 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const AutoComplete = ({ options, editCurrentGuess } : { options:string[], editCurrentGuess:Function}) => {
   const [inputValue, setInputValue] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
-  const suggestionsRef = useRef(null); // Reference to the suggestion list
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const suggestionsRef = useRef<HTMLDivElement>(null); // Reference to the suggestion list
 
   useEffect(() => {
-    // Event listener to handle clicks outside of the suggestion list
-    const handleClickOutside = (event) => {
-      if (suggestionsRef.current && !suggestionsRef.current.contains(event.target)) {
-        setSuggestions([]); // Close the suggestion list
+    const handleClickOutside = (event: MouseEvent) => {
+      if (suggestionsRef.current && !suggestionsRef.current.contains(event.target as Node)) {
+        setSuggestions([]);
       }
     };
-
+  
     document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
   }, []);
+  
 
-  const handleChange = (event) => {
+  const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
-    editCurrentGuess(value);                                // Does this work here?
+    editCurrentGuess(value);                           
 
     // Filter options based on input value
     const filteredSuggestions = options.filter(option =>
@@ -33,14 +30,14 @@ const AutoComplete = ({ options, editCurrentGuess } : { options:string[], editCu
     setSuggestions(filteredSuggestions);
   };
 
-  const handleSelect = (value) => {
+  const handleSelect = (value : string) => {
     setInputValue(value);
     setSuggestions([]);
-    editCurrentGuess(value);                                // Does this work here?
+    editCurrentGuess(value);                    
   };
 
   return (
-    <div className="relative" ref={suggestionsRef}>
+    <div className="relative w-full" ref={suggestionsRef}>
       <input
         type="text"
         value={inputValue}
@@ -49,7 +46,7 @@ const AutoComplete = ({ options, editCurrentGuess } : { options:string[], editCu
         className="generic-tile bg-dark-gray text-white outline-none placeholder-white w-full"
       />
       {suggestions.length > 0 && (
-        <ul className="absolute z-10 bg-gray-100 top-[36px] w-[600px] mt-2 suggestion-tile rounded-md">
+        <ul className="absolute z-10 bg-gray-100 top-[36px] mt-2 suggestion-tile rounded-md w-full">
           {suggestions.map((suggestion, index) => (
             <li
               key={index}

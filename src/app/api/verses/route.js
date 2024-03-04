@@ -10,8 +10,9 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     await connectMongoDB(); 
-    const today = new Date().toISOString().split('T')[0]; // Get today's date in the format "YYYY-MM-DD"
-    const verses = await Verse.findOne({ date: today }); 
+    console.log("was here")
+    // const today = new Date().toISOString().split('T')[0]; // Get today's date in the format "YYYY-MM-DD"
+    const verses = await Verse.find(); 
     return NextResponse.json(verses); 
 }
 

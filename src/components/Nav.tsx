@@ -1,13 +1,21 @@
-import React from "react";
-import { FaQuestion, FaChartArea, FaGear } from "react-icons/fa6";
+"use client";
+
+import React, { useState } from "react";
+import { FaQuestion, FaChartArea, FaGear, FaBookmark } from "react-icons/fa6";
+import GuideOverlay from "./GuideOverlay";
 
 const Nav = () => {
+  const [showGuide, setShowGuide] = useState(false);
+
   return (
-    <nav className="flex flex-col justify-start items-center">
-      <div className="flex flex-row items-center justify-between mx-6">
-        <div className="">
+    <div className="relative">
+      <nav className="flex flex-row items-center justify-between mx-6">
+        <div className="flex flex-row justify-center items-center gap-1">
           <div className="circle-icon">
-            <FaQuestion />
+            <FaBookmark />
+          </div>
+          <div className="circle-icon">
+            <FaQuestion onClick={() => setShowGuide(true)} />
           </div>
         </div>
         <div className="text-black uppercase text-2xl font-bold">Versle</div>
@@ -19,8 +27,13 @@ const Nav = () => {
             <FaGear />
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      {showGuide === true && (
+        <div className="absolute z-50">
+          <GuideOverlay showGuide={showGuide} setShowGuide={setShowGuide}/>
+        </div>
+      )}
+    </div>
   );
 };
 

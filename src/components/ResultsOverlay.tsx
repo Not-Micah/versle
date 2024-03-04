@@ -6,12 +6,12 @@ import { IoClose } from "react-icons/io5";
 
 const ResultsOverlay = ({
   status,
-  correctBook,
-  correctVerse,
+  book,
+  location,
 }: {
   status: string;
-  correctBook: string;
-  correctVerse: string;
+  book: string;
+  location: string;
 }) => {
   const [visibility, editVisibility] = useState(true);
 
@@ -24,7 +24,7 @@ const ResultsOverlay = ({
       <div
         className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 fixed
      bg-gray-100 flex flex-col gap-5 justify-center items-start rounded-md shadow-md
-     px-6 py-8 max-w-[30rem]"
+     px-6 pt-4 pb-8 max-w-[30rem]"
       >
         <div className="flex flex-row justify-between items-center w-full">
           <h3>
@@ -40,9 +40,9 @@ const ResultsOverlay = ({
         </div>
         <p>
           {status === "lost"
-            ? `The correct answer was ${correctBook}! This comes from ${correctVerse}. Try again tomorrow 😊`
+            ? `The correct answer was ${book}! This comes from ${location}. Try again tomorrow 😊`
             : status === "won" &&
-              `Today's verse comes from ${correctVerse}. Play again tomorrow 😊`}
+              `Today's verse comes from ${location}. Play again tomorrow 😊`}
         </p>
       </div>
     </div>
