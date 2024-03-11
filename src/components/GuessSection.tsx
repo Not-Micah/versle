@@ -30,7 +30,7 @@ const GuessSection = ({ book, location }: { book: string, location: string }) =>
   const [currentGuess, editCurrentGuess] = useState("");
 
   const [status, editStatus] = useState(() => {
-    if (guessData.some((item) => item.guess === book)) {
+    if (guessData.some((item : guessType) => item.guess === book)) {
       return "won";
     } else if (guessNumber === 4) {
       return "lost";
