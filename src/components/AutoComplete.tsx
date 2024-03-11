@@ -43,7 +43,7 @@ const AutoComplete = ({ options, editCurrentGuess } : { options:string[], editCu
         value={inputValue}
         onChange={handleChange}
         placeholder="Type to search..."
-        className="generic-tile bg-dark-gray text-white outline-none placeholder-white w-full"
+        className="generic-tile bg-dark-gray text-white outline-none placeholder-white w-full dynamic-text-md"
       />
       {suggestions.length > 0 && (
         <ul className="absolute z-10 bg-gray-100 top-[36px] mt-2 suggestion-tile rounded-md w-full">

@@ -51,22 +51,22 @@ const GuessedTile = ({
 
 
   return (
-    <div className="flex flex-row bg-light-gray justify-between items-center generic-tile gap-2">
-      <div className="flex flex-row gap-8">
-        <p className="flex-3 w-[5rem]">{guess}</p>
-        <div className="flex-5 flex flex-row justify-start items-center gap-5">
+    <div className="flex flex-row bg-light-gray justify-between items-center generic-tile gap-2 overflow-hidden">
+      <div className="flex flex-row gap-4">
+        <p className="flex-3 dynamic-text-md">{guess}</p>
+        <div className="flex-5 flex flex-row justify-start items-center dynamic-square-spacing">
           {squares.map((_, index) => (
             <div
               key={index}
-              className={`w-[18px] h-[18px] rounded-sm fade-in z-0`}
+              className={`dynamic-square rounded-sm fade-in z-0`}
               style={{ backgroundColor: colorList[index] }} // Modify style
             ></div>
           ))}
         </div>
       </div>
       <div className="flex-3 flex flex-row gap-3">
-        <p className="w-[2rem]">{icon}</p>
-        <p className="w-[3rem] text-right">{percentage}%</p>
+        <p className="dynamic-text-md">{icon}</p>
+        <p className="text-right dynamic-text-md">{percentage}%</p>
       </div>
     </div>
   );

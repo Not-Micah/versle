@@ -83,7 +83,7 @@ const EntryTile = ({
         />
       </div>
       <button
-        className="w-1/4 generic-tile uppercase font-bold cursor-pointer duration-300 bg-dark-gray text-white"
+        className="w-1/3 generic-tile uppercase font-bold cursor-pointer duration-300 bg-dark-gray text-white dynamic-text-md overflow-ellipsis" 
         onClick={submitEntry}
       >
         Guess

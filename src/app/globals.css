@@ -32,3 +32,26 @@
 .fade-in {
 animation: fade-in 0.5s ease forwards;
 }
+
+.dynamic-text-xl {
+  @apply text-2xl max-[500px]:text-xl 
+}
+
+.dynamic-text-lg {
+  @apply text-xl max-[500px]:text-lg max-[400px]:text-base
+}
+
+.dynamic-text-md {
+  @apply text-base max-[500px]:text-sm max-[400px]:text-xs
+}
+
+/* ////////////////////// */
+.dynamic-square {
+  @apply w-[18px] h-[18px] max-[500px]:w-[14px] max-[500px]:h-[14px] max-[400px]:w-[10px] max-[400px]:h-[10px]
+}
+
+.dynamic-square-spacing {
+  @apply gap-6 max-[500px]:gap-4 max-[400px]:gap-3
+}
+
+/* ////////////////////// */

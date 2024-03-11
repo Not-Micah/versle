@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaQuestion, FaChartArea, FaGear, FaBookmark } from "react-icons/fa6";
+import { FaQuestion, FaGear } from "react-icons/fa6";
 import GuideOverlay from "./GuideOverlay";
 
 const Nav = () => {
@@ -10,22 +10,12 @@ const Nav = () => {
   return (
     <div className="relative">
       <nav className="flex flex-row items-center justify-between mx-6">
-        <div className="flex flex-row justify-center items-center gap-1">
-          <div className="circle-icon">
-            <FaBookmark />
-          </div>
           <div className="circle-icon">
             <FaQuestion onClick={() => setShowGuide(true)} />
           </div>
-        </div>
-        <div className="text-black uppercase text-2xl font-bold">Versle</div>
-        <div className="flex flex-row justify-center items-center gap-1">
-          <div className="circle-icon">
-            <FaChartArea />
-          </div>
-          <div className="circle-icon">
-            <FaGear />
-          </div>
+        <div className="text-black uppercase dynamic-text-xl font-bold">Versle</div>
+        <div className="circle-icon">
+          <FaGear />
         </div>
       </nav>
       {showGuide === true && (

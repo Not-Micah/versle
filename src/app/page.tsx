@@ -26,9 +26,14 @@ const Home = async () => {
 
   return (
     <div className="max-w-[600px] mx-auto my-8">
-      <Nav />
-      <Verse verse={verse} />
-      <GuessSection book={book} location={location} />
+      <div className="max-[300px]:hidden">
+        <Nav />
+        <Verse verse={verse} />
+        <GuessSection book={book} location={location} />
+      </div>
+      <div className="min-[300px]:hidden px-3">
+        Device too small to display.
+      </div>
     </div>
   );
 };

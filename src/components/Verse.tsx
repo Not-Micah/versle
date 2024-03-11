@@ -8,8 +8,8 @@ const Verse = ({ verse } : { verse : string }) => {
   });
 
   return (
-    <section className="flex justify-center items-center px-20 my-16">
-        <p className="text-xl">{verse}</p>
+    <section className="flex justify-center items-center mx-6 my-16 text-center">
+        <p className="dynamic-text-lg">{verse}</p>
     </section>
   )
 }
