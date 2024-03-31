@@ -51,7 +51,7 @@ const AutoComplete = ({ options, editCurrentGuess } : { options:string[], editCu
             <li
               key={index}
               onClick={() => handleSelect(suggestion)}
-              className="px-4 py-2 cursor-pointer hover:bg-gray-100 rounded-md"
+              className="px-4 py-2 cursor-pointer hover:bg-gray-100 rounded-md dynamic-text-md"
             >
               {suggestion}
             </li>

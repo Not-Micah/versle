@@ -1,37 +1,26 @@
-import React from "react";
+"use client";
+
+import Modal from "./Modal";
+import useGuide from "../hooks/useGuide";
+import { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 
-const GuideOverlay = ({
-  showGuide,
-  setShowGuide,
-}: {
-  showGuide: boolean;
-  setShowGuide: Function;
-}) => {
-  const colorsExample = ["#123123", "#321321", "#123123", "#321321", "#123123"];
+const GuideModal = () => {
+    const { onClose, isOpen } = useGuide();
+
+    const onChange = (open: boolean) => {
+        if (!open) {
+            onClose();
+        }
+    }
+
+    const colorsExample = ["#123123", "#321321", "#123123", "#321321", "#123123"];
 
   return (
-    <div className={`v-[100vh] w-[100vw] ${!showGuide && "hidden"} z-10`}>
-      <div
-        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-      bg-black w-[100%] h-[100%] opacity-50"
-      ></div>
-      <div
-        className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 fixed
-     bg-gray-100 flex flex-col gap-5 justify-center items-start rounded-md shadow-md
-     px-6 pt-4 pb-8 max-w-[30rem]"
-      >
-        <div className="flex flex-row justify-between items-center w-full">
-          <h3>How to Play</h3>
-          <button onClick={() => setShowGuide(false)}>
-            <div className="circle-icon">
-              <IoClose />
-            </div>
-          </button>
-        </div>
+    <Modal title="How to play" description="" isOpen={isOpen} onChange={onChange}>
         <div className="flex flex-col justify-center items-start gap-5">
           <p>Guess which book the displayed verse comes from!</p>
-          <div className="flex flex-row bg-light-gray justify-around items-center generic-tile gap-5">
+          <div className="flex flex-row bg-light-gray justify-around items-center generic-tile gap-5 w-full">
             <div className="flex flex-row gap-8">
               <p className="flex">John</p>
               <div className="flex-5 flex flex-row justify-start items-center gap-5">
@@ -56,9 +45,8 @@ const GuideOverlay = ({
             Good luck!
           </p>
         </div>
-      </div>
-    </div>
-  );
-};
+    </Modal>
+  )
+}
 
-export default GuideOverlay;
+export default GuideModal

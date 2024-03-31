@@ -8,15 +8,15 @@
 }
 
 .generic-tile  {
-    @apply rounded-md px-4 py-2 /*border-[1.75px] border-black*/
+    @apply rounded-md px-4 py-2 max-[500px]:py-3
 }
 
 .dotted-tile  {
-    @apply rounded-md px-4 py-2 /*border-[1.75px] border-dotted*/ border-gray-700
+    @apply rounded-md px-4 py-2 border-gray-700 max-[500px]:py-3
 }
 
 .suggestion-tile {
-    @apply rounded-md /*border-[1.75px] border-gray-300*/
+    @apply rounded-md
 }
 
 /* VANILLA CSS WARNING? */
@@ -34,15 +34,15 @@ animation: fade-in 0.5s ease forwards;
 }
 
 .dynamic-text-xl {
-  @apply text-2xl max-[500px]:text-xl 
+  @apply text-3xl max-[500px]:text-2xl 
 }
 
 .dynamic-text-lg {
-  @apply text-xl max-[500px]:text-lg max-[400px]:text-base
+  @apply text-xl max-[500px]:text-lg
 }
 
 .dynamic-text-md {
-  @apply text-base max-[500px]:text-sm max-[400px]:text-xs
+  @apply text-lg max-[500px]:text-base
 }
 
 /* ////////////////////// */

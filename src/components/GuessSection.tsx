@@ -7,7 +7,7 @@ import CountTile from "./CountTile";
 import GuessedTile from "./GuessedTile";
 import { guessType } from "@/data";
 import { useState, useEffect } from "react";
-import ResultsOverlay from "./ResultsOverlay";
+import ResultsOverlay from "./F ResultsOverlay";
 
 const GuessSection = ({ book, location }: { book: string, location: string }) => {
   const emptyData = [
