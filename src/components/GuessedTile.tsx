@@ -5,7 +5,7 @@ const GuessedTile = ({
   index,
   guess,
   percentageDifference,
-  icon
+  icon,
 }: {
   index: number;
   guess: string;
@@ -33,10 +33,9 @@ const GuessedTile = ({
     };
   }, []);
 
-
   useEffect(() => {
     const interval = setInterval(() => {
-      editPercentage(prevPercentage => {
+      editPercentage((prevPercentage) => {
         if (prevPercentage === percentageDifference) {
           clearInterval(interval);
           return percentageDifference;
@@ -44,29 +43,26 @@ const GuessedTile = ({
           return prevPercentage + 1;
         }
       });
-    }, 25); 
-    
-    return () => clearInterval(interval);
-  }, []); 
+    }, 25);
 
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="flex flex-row bg-light-gray justify-between items-center generic-tile gap-2 overflow-hidden">
-      <div className="flex flex-row gap-4">
-        <p className="flex-3 dynamic-text-md">{guess}</p>
-        <div className="flex-5 flex flex-row justify-start items-center dynamic-square-spacing">
-          {squares.map((_, index) => (
-            <div
-              key={index}
-              className={`dynamic-square rounded-sm fade-in z-0`}
-              style={{ backgroundColor: colorList[index] }} // Modify style
-            ></div>
-          ))}
-        </div>
+    <div className="grid grid-cols-3 bg-light-gray generic-tile gap-2 overflow-hidden">
+      <p className="dynamic-text-lg overflow-x-clip mr-2">{guess}</p>
+      <div className="flex flex-row justify-start items-center dynamic-square-spacing">
+        {squares.map((_, index) => (
+          <div
+            key={index} 
+            className={`dynamic-square rounded-sm fade-in z-0`}
+            style={{ backgroundColor: colorList[index] }}
+          ></div>
+        ))}
       </div>
-      <div className="flex-3 flex flex-row gap-3">
-        <p className="dynamic-text-md">{icon}</p>
+      <div className="flex flex-row justify-end gap-3">
         <p className="text-right dynamic-text-md">{percentage}%</p>
+        <p className="dynamic-text-md">{icon}</p>
       </div>
     </div>
   );

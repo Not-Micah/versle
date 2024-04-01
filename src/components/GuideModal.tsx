@@ -6,47 +6,54 @@ import { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 
 const GuideModal = () => {
-    const { onClose, isOpen } = useGuide();
+  const { onClose, isOpen } = useGuide();
 
-    const onChange = (open: boolean) => {
-        if (!open) {
-            onClose();
-        }
+  const onChange = (open: boolean) => {
+    if (!open) {
+      onClose();
     }
+  };
 
-    const colorsExample = ["#123123", "#321321", "#123123", "#321321", "#123123"];
+  const colorsExample = ["#123123", "#321321", "#123123", "#321321", "#123123"];
 
   return (
-    <Modal title="How to play" description="" isOpen={isOpen} onChange={onChange}>
-        <div className="flex flex-col justify-center items-start gap-5">
-          <p>Guess which book the displayed verse comes from!</p>
-          <div className="flex flex-row bg-light-gray justify-around items-center generic-tile gap-5 w-full">
-            <div className="flex flex-row gap-8">
-              <p className="flex">John</p>
-              <div className="flex-5 flex flex-row justify-start items-center gap-5">
-                {colorsExample.map((color, index) => (
-                  <div
-                    key={index}
-                    className={`w-[18px] h-[18px] rounded-sm fade-in z-0`}
-                    style={{ backgroundColor: color }}
-                  ></div>
-                ))}
-              </div>
-            </div>
-            <div className="flex-3 flex flex-row gap-3">
-              <p className="">➡️</p>
-              <p className="text-right">5%</p>
-            </div>
-          </div>
-          <p>
-            How close your guess was is displayed as a percentage, and also the
-            colored squares, with a right or left icon indicating the direction
-            of the correct book. You have 4 attempts to guess the right book!
-            Good luck!
-          </p>
-        </div>
-    </Modal>
-  )
-}
+    <Modal
+      title="How to play"
+      description=""
+      isOpen={isOpen}
+      onChange={onChange}
+    >
+      <div className="flex flex-col justify-center items-start gap-5 max-[350px]:hidden">
+        <p>Guess which book the displayed verse comes from!</p>
 
-export default GuideModal
+        {/*  */}
+        <div className="grid grid-cols-5 bg-light-gray generic-tile gap-2 overflow-hidden">
+          <p className="dynamic-text-lg col-span-1 overflow-x-clip mr-2">John</p>
+          <div className="flex flex-row col-span-3 justify-start items-center dynamic-square-spacing">
+            {colorsExample.map((color, index) => (
+              <div
+                key={index} 
+                className={`dynamic-square rounded-sm fade-in z-0`}
+                style={{ backgroundColor: color }}
+              ></div>
+            ))}
+          </div>
+          <div className="flex flex-row justify-end gap-3 col-span-1 ">
+            <p className="text-right dynamic-text-md">5%</p>
+            <p className="dynamic-text-md">➡️</p>
+          </div>
+        </div>
+        {/*  */}
+
+        <p>
+          How close your guess was is displayed as a percentage, and also the
+          colored squares, with a right or left icon indicating the direction of
+          the correct book. You have 4 attempts to guess the right book! Good
+          luck!
+        </p>
+      </div>
+    </Modal>
+  );
+};
+
+export default GuideModal;

@@ -1,6 +1,7 @@
 "use client";
 
 import GuideModal from "@/components/GuideModal";
+import ResultsModal from "@/components/ResultsModal";
 import { useEffect, useState } from "react";
 
 const ModalProvider = () => {
@@ -16,6 +17,7 @@ const ModalProvider = () => {
 
   return (
     <>
+      <ResultsModal />
       <GuideModal />
     </>
   );

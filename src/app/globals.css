@@ -47,11 +47,14 @@ animation: fade-in 0.5s ease forwards;
 
 /* ////////////////////// */
 .dynamic-square {
-  @apply w-[18px] h-[18px] max-[500px]:w-[14px] max-[500px]:h-[14px] max-[400px]:w-[10px] max-[400px]:h-[10px]
+  @apply w-[18px] h-[18px] 
+  max-[500px]:w-[16px] max-[500px]:h-[16px] 
+  max-[400px]:w-[14px] max-[400px]:h-[14px]
 }
 
 .dynamic-square-spacing {
-  @apply gap-6 max-[500px]:gap-4 max-[400px]:gap-3
+  @apply gap-4
+  max-[500px]:gap-2
+  max-[400px]:gap-1
 }
-
 /* ////////////////////// */

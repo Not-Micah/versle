@@ -26,12 +26,12 @@ const Home = async () => {
 
   return (
     <div className="max-w-[600px] mx-auto my-8">
-      <div className="max-[300px]:hidden">
+      <div className="max-[350px]:hidden">
         <Nav />
         <Verse verse={verse} />
         <GuessSection book={book} location={location} />
       </div>
-      <div className="min-[300px]:hidden px-3">
+      <div className="min-[350px]:hidden px-3">
         Device too small to display.
       </div>
     </div>
