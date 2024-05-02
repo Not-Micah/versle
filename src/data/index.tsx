@@ -81,15 +81,13 @@ export const percentageToColors = (percentage : number) => {
         colorSquares.push("#7DC884");
     }
 
-    if (percentage % 10 >= 5) {
-        colorSquares.push("#FF11FF");
-    } else if (percentage % 10 > 0) {
-        colorSquares.push("#135790");
-    }
-
+    if (percentage % 20 >= 5) {
+        colorSquares.push("#B59F3B");
+    } 
+    
     const remainingSquares = 5 - colorSquares.length;
     for (let i = 0; i < remainingSquares; i++) {
-        colorSquares.push("#000000");
+        colorSquares.push("#3A3A3C");
     }
 
     return colorSquares;

@@ -10,10 +10,14 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     await connectMongoDB(); 
-    console.log("was here")
-    // const today = new Date().toISOString().split('T')[0]; // Get today's date in the format "YYYY-MM-DD"
-    const verses = await Verse.find(); 
-    return NextResponse.json(verses); 
+    const today = new Date().toISOString().split('T')[0];
+    const verse = await Verse.findOne({ date: today }); 
+
+    if (verse) {
+        return NextResponse.json(verse);
+    } else {
+        return NextResponse.error(new Error("Verse for today not found"), { status: 404 });
+    }
 }
 
 export async function POST(request) {

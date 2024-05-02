@@ -21,8 +21,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <GuessProvider>
           {children}
+          <ModalProvider />
         </GuessProvider>
-        <ModalProvider />
       </body>
     </html>
   );

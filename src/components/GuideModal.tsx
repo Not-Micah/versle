@@ -14,7 +14,7 @@ const GuideModal = () => {
     }
   };
 
-  const colorsExample = ["#123123", "#321321", "#123123", "#321321", "#123123"];
+  const colorsExample = ["#7DC884", "#7DC884", "#7DC884", "#B59F3B", "#3A3A3C"];
 
   return (
     <Modal
@@ -23,9 +23,8 @@ const GuideModal = () => {
       isOpen={isOpen}
       onChange={onChange}
     >
-      <div className="flex flex-col justify-center items-start gap-5 max-[350px]:hidden">
-        <p>Guess which book the displayed verse comes from!</p>
-
+      <div className="flex flex-col justify-center items-center gap-5 max-[350px]:hidden">
+        <p className="text-center">Guess which book the displayed verse comes from!</p>
         {/*  */}
         <div className="grid grid-cols-5 bg-light-gray generic-tile gap-2 overflow-hidden">
           <p className="dynamic-text-lg col-span-1 overflow-x-clip mr-2">John</p>
@@ -39,13 +38,13 @@ const GuideModal = () => {
             ))}
           </div>
           <div className="flex flex-row justify-end gap-3 col-span-1 ">
-            <p className="text-right dynamic-text-md">5%</p>
+            <p className="text-right dynamic-text-md">85%</p>
             <p className="dynamic-text-md">➡️</p>
           </div>
         </div>
         {/*  */}
 
-        <p>
+        <p className="text-center">
           How close your guess was is displayed as a percentage, and also the
           colored squares, with a right or left icon indicating the direction of
           the correct book. You have 4 attempts to guess the right book! Good

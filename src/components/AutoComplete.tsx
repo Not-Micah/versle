@@ -46,7 +46,7 @@ const AutoComplete = ({ options, editCurrentGuess } : { options:string[], editCu
         className="generic-tile bg-dark-gray text-white outline-none placeholder-white w-full dynamic-text-md"
       />
       {suggestions.length > 0 && (
-        <ul className="absolute z-10 bg-gray-100 top-[36px] mt-2 suggestion-tile rounded-md w-full">
+        <ul className="absolute z-10 bg-gray-100 top-[42px] mt-2 suggestion-tile rounded-md w-full">
           {suggestions.map((suggestion, index) => (
             <li
               key={index}
