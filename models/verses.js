@@ -11,6 +11,5 @@ const verseSchema = new Schema(
 
 // Existing "Verse" schema with Date instead of String
 const Verse = mongoose.models.DailyVerse || mongoose.model("DailyVerse", verseSchema);
-// Ask ChatGPT what "Verse" does here...
 
 export default Verse;

@@ -20,7 +20,7 @@ const ResultsModal = () => {
     useEffect(() => {
       const getDailyVerse = async () => {
         try {
-          const res = await fetch("https://versle.vercel.app/api/verses", {
+          const res = await fetch("http://localhost:3000/api/verses", {
             cache: "no-store",
           });
       
@@ -29,7 +29,6 @@ const ResultsModal = () => {
           }
           const jsonData = await res.json();
           setDailyVerse(jsonData);
-          console.log(jsonData)
         } catch (error) {
           console.error("Error fetching data:", error);
           // Optionally, you can set some fallback data or handle the error differently

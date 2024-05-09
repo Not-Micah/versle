@@ -11,6 +11,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
     await connectMongoDB(); 
     const today = new Date().toISOString().split('T')[0];
+
     const verse = await Verse.findOne({ date: today }); 
 
     if (verse) {
@@ -19,6 +20,7 @@ export async function GET() {
         return NextResponse.error(new Error("Verse for today not found"), { status: 404 });
     }
 }
+
 
 export async function POST(request) {
     const { location, date, book, verse } = await request.json();

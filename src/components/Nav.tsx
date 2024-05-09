@@ -3,10 +3,12 @@
 import React, { useState } from "react";
 import { FaQuestion, FaGear } from "react-icons/fa6";
 import useGuide from "@/hooks/useGuide";
+import useHomeStatus from "@/hooks/useHome";
 
 const Nav = () => {
   // const [showGuide, setShowGuide] = useState(false);
   const { onClose, onOpen, isOpen } = useGuide();
+  const { onHomeOpen } = useHomeStatus();
 
   return (
     <div className="relative">
@@ -30,14 +32,15 @@ const Nav = () => {
             <path
               d="M2.99975 17.6351C116.771 12.3405 178.178 12.7036 252 18.0966"
               stroke="#000000"
-              stroke-width="5.75696"
-              stroke-linecap="round"
+              strokeWidth="5.75696"
+              strokeLinecap="round"
             />
           </svg>
           Versle
         </div>
         <div className="circle-icon">
-          <FaGear />
+          <FaGear
+          onClick={() => onHomeOpen()} />
         </div>
       </nav>
     </div>

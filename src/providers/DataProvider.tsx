@@ -22,53 +22,37 @@ interface GuessContextType {
 
 const GuessContext = createContext<GuessContextType | undefined>(undefined);
 
-const emptyData: GuessData[] = [
-  { guess: "", percentage: 0, icon: "" },
-  { guess: "", percentage: 0, icon: "" },
-  { guess: "", percentage: 0, icon: "" },
-  { guess: "", percentage: 0, icon: "" },
-];
-
 interface GuessProviderContext {
   children: React.ReactNode;
 }
 
 const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
-  const { isOpen, onOpen } = useGameStatus()
+  const { isOpen, onOpen } = useGameStatus();
 
-  const [guessData, setGuessData] = useState<GuessData[]>(() => {
-    const data = window.localStorage.getItem("VERSLE_GUESSES");
-    return data !== null ? JSON.parse(data) : emptyData;
-  });
+  const emptyData: GuessData[] = [
+    { guess: "", percentage: 0, icon: "" },
+    { guess: "", percentage: 0, icon: "" },
+    { guess: "", percentage: 0, icon: "" },
+    { guess: "", percentage: 0, icon: "" },
+  ];
 
-  const [guessNumber, setGuessNumber] = useState<number>(() => {
-    const index = window.localStorage.getItem("VERLSE_GUESS_NUMBER");
-    return index !== null ? parseInt(index) : 0;
-  });
-
+  const [guessData, setGuessData] = useState<GuessData[]>(emptyData);
+  const [guessNumber, setGuessNumber] = useState<number>(0);
   const [currentGuess, setCurrentGuess] = useState<string>("");
-  
-  const [status, setStatus] = useState<string>(() => {
-    if (guessData.some((item) => item.icon === "🏆")) {
-      onOpen()
-      return "won";
-    } else if (guessNumber === 4) {
-      onOpen()
-      return "lost";
-    } else {
-      return "playing";
-    }
-  });
+
+  const [status, setStatus] = useState<string>("playing");
 
   useEffect(() => {
     const currentDate = new Date();
     const formattedDate = `${currentDate.getFullYear()}-${
       currentDate.getMonth() + 1
     }-${currentDate.getDate()}`;
+
     const lastPlayed = window.localStorage.getItem("VERSLE_LAST_DATE");
 
     if (!lastPlayed || JSON.parse(lastPlayed) !== formattedDate) {
-      console.log("Ran through here");
+      console.log("This is the reason of your problems");
+
       setGuessNumber(0);
       setGuessData(emptyData);
       window.localStorage.setItem("VERSLE_GUESSES", JSON.stringify(""));
@@ -77,15 +61,39 @@ const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
         "VERSLE_LAST_DATE",
         JSON.stringify(formattedDate)
       );
+    } else {
+      const memGuess = JSON.parse(window.localStorage.getItem("VERSLE_GUESSES"));
+      
+      // ERROR FIX P1 Prevents Assigning Null Data To GuessData
+      if (memGuess) {
+        setGuessData(memGuess);
+        setGuessNumber(
+          JSON.parse(window.localStorage.getItem("VERLSE_GUESS_NUMBER"))
+        );
+      }
+
+      if (guessData.some((item) => item.icon === "🏆")) {
+        onOpen();
+        setStatus("won");
+      } else if (guessNumber === 4) {
+        onOpen();
+        setStatus("lost");
+      } else {
+        setStatus("playing");
+      }
     }
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("VERSLE_GUESSES", JSON.stringify(guessData));
-    window.localStorage.setItem(
-      "VERLSE_GUESS_NUMBER",
-      JSON.stringify(guessNumber)
-    );
+    // ERROR FIX P2 Not directly comparing guessData with emptyData due to type issues 'guessData[0].guess !== ""' 
+    if (guessData && guessData[0].guess !== "") {
+      window.localStorage.setItem("VERSLE_GUESSES", JSON.stringify(guessData));
+      window.localStorage.setItem(
+        "VERLSE_GUESS_NUMBER",
+        JSON.stringify(guessNumber)
+      );
+      console.log("Passing through update effect.");
+    }
   }, [guessData, guessNumber]);
 
   const value = {

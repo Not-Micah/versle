@@ -6,7 +6,7 @@ import GuessSection from "@/components/GuessSection";
 const getDailyVerse = async () => {
   try {
     // https://versle.vercel.app/api/verses
-    const res = await fetch("https://versle.vercel.app/api/verses", {
+    const res = await fetch("http://localhost:3000/api/verses", {
       cache: "no-store",
     });
 
@@ -22,7 +22,6 @@ const getDailyVerse = async () => {
 
 const Home = async () => {
   const { verse, book, location } = await getDailyVerse();
-  console.log(verse, book, location);
 
   return (
     <div className="max-w-[600px] mx-auto my-8">
