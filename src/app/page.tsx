@@ -1,37 +1,22 @@
-import React from "react";
-import Nav from "@/components/Nav";
-import Verse from "@/components/Verse";
-import GuessSection from "@/components/GuessSection";
+"use client";
 
-const getDailyVerse = async () => {
-  try {
-    // https://versle.vercel.app/api/verses
-    const res = await fetch("http://localhost:3000/api/verses", {
-      cache: "no-store",
-    });
+import useHomeStatus from "@/hooks/useHome";
+import RoundedButton from "@/components/RoundedButton";
+import { useRouter } from "next/navigation";
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch!");
-    }
-
-    return res.json();
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const Home = async () => {
-  const { verse, book, location } = await getDailyVerse();
+const Home = () => {
+  const router = useRouter();
 
   return (
-    <div className="max-w-[600px] mx-auto my-8">
-      <div className="max-[350px]:hidden">
-        <Nav />
-        <Verse verse={verse} />
-        <GuessSection book={book} location={location} />
-      </div>
-      <div className="min-[350px]:hidden px-3">
-        Device too small to display.
+    <div className="w-full h-[100vh] flex justify-center items-center">
+      <div className="flex flex-col justify-center items-center gap-y-8 min-w-[300px]">
+        <h3 className="uppercase text-center font-semibold text-5xl tracking-widest">Versle!</h3>
+        <RoundedButton onClick={() => router.replace("./play")}>
+          Play
+        </RoundedButton>
+        <RoundedButton>
+          <a href="https://micahtid.vercel.app/">About The Dev</a>
+        </RoundedButton>
       </div>
     </div>
   );

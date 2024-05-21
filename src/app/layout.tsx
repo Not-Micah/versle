@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ModalProvider from "@/providers/ModalProvider";
 import { GuessProvider } from "@/providers/DataProvider";
-import HomeProvider from "@/providers/HomeProvider";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <HomeProvider>
           <GuessProvider>
             {children}
             <ModalProvider />
           </GuessProvider>
-        </HomeProvider>
       </body>
     </html>
   );

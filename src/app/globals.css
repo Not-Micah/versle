@@ -1,60 +1,60 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 
 .circle-icon {
-    @apply flex justify-center items-center p-3 text-black w-[3rem] h-[3rem]
+  @apply flex justify-center items-center p-3 text-black w-[3rem] h-[3rem]
 }
 
 .generic-tile  {
-    @apply rounded-md px-4 py-2 max-[500px]:py-3
+  @apply rounded-md px-4 py-2 max-[500px]:py-3
 }
 
 .dotted-tile  {
-    @apply rounded-md px-4 py-2 border-gray-700 max-[500px]:py-3
+  @apply rounded-md px-4 py-2 border-gray-700 max-[500px]:py-3
 }
 
 .suggestion-tile {
-    @apply rounded-md
+  @apply rounded-md
 }
 
 /* VANILLA CSS WARNING? */
 @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
 
 .fade-in {
 animation: fade-in 0.5s ease forwards;
 }
 
 .dynamic-text-xl {
-  @apply text-3xl max-[500px]:text-2xl 
+@apply text-3xl max-[500px]:text-2xl 
 }
 
 .dynamic-text-lg {
-  @apply text-xl max-[500px]:text-lg
+@apply text-xl max-[500px]:text-lg
 }
 
 .dynamic-text-md {
-  @apply text-lg max-[500px]:text-base
+@apply text-lg max-[500px]:text-base
 }
 
 /* ////////////////////// */
 .dynamic-square {
-  @apply w-[18px] h-[18px] 
-  max-[500px]:w-[16px] max-[500px]:h-[16px] 
-  max-[400px]:w-[14px] max-[400px]:h-[14px]
+@apply w-[18px] h-[18px] 
+max-[500px]:w-[16px] max-[500px]:h-[16px] 
+max-[400px]:w-[14px] max-[400px]:h-[14px]
 }
 
 .dynamic-square-spacing {
-  @apply gap-4
-  max-[500px]:gap-2
-  max-[400px]:gap-1
+@apply gap-4
+max-[500px]:gap-2
+max-[400px]:gap-1
 }
 /* ////////////////////// */
