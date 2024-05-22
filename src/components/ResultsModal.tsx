@@ -20,7 +20,7 @@ const ResultsModal = () => {
     useEffect(() => {
       const getDailyVerse = async () => {
         try {
-          const res = await fetch("http://localhost:3000/api/verses", {
+          const res = await fetch("https://versle.vercel.app/api/verses", {
             cache: "no-store",
           });
       
