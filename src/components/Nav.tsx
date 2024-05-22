@@ -20,14 +20,14 @@ const Nav = () => {
             }}
           />
         </div>
-        <div className="text-blackuppercase text-3xl font-bold relative">
+        <div className="text-blackuppercase text-3xl uppercase font-bold relative">
           <svg
-            width="120"
+            width="150"
             height="36"
             viewBox="0 0 255 36"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-[20px] -left-[10px]"
+            className="absolute top-[25px] -left-[5px]"
           >
             <path
               d="M2.99975 17.6351C116.771 12.3405 178.178 12.7036 252 18.0966"

@@ -16,14 +16,15 @@ const getDailyVerse = async () => {
 
     return res.json();
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
 const Play = async () => {
-  const { verse, book, location } = await getDailyVerse();
+  try {
+    const { verse, book, location } = await getDailyVerse();
 
-  return (
+    return (
       <div className="max-w-[600px] mx-auto my-8">
         <div className="max-[350px]:hidden">
           <Nav />
@@ -34,7 +35,16 @@ const Play = async () => {
           Device too small to display.
         </div>
       </div>
-  );
+    );
+  } catch (e) {
+    return (
+      <div className="w-[100vw] h-[100vh] flex justify-center items-center">
+        <h3 className="max-w-[200px] textl-xl text-center">
+          It seems there was an error...
+        </h3>
+      </div>
+    );
+  }
 };
 
 export default Play;

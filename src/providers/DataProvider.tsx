@@ -62,15 +62,21 @@ const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
         JSON.stringify(formattedDate)
       );
     } else {
-      const memGuess = JSON.parse(window.localStorage.getItem("VERSLE_GUESSES"));
-      
-      // ERROR FIX P1
-      if (memGuess) {
-        setGuessData(memGuess);
-        setGuessNumber(
-          JSON.parse(window.localStorage.getItem("VERLSE_GUESS_NUMBER"))
-        );
+      const tempGuesses = window.localStorage.getItem("VERSLE_GUESSES");
+      const tempGuessNumber = window.localStorage.getItem("VERLSE_GUESS_NUMBER");
+
+      if (tempGuesses && tempGuessNumber) {
+        const memGuess = JSON.parse(tempGuesses);
+
+        // ERROR FIX P1
+        if (memGuess) {
+          setGuessData(memGuess);
+          setGuessNumber(
+            JSON.parse(tempGuessNumber)
+          );
+        }
       }
+      
 
       if (guessData.some((item) => item.icon === "🏆")) {
         onOpen();
