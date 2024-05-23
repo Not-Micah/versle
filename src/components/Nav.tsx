@@ -2,13 +2,16 @@
 
 import React, { useState } from "react";
 import { FaQuestion, FaGear } from "react-icons/fa6";
+import { FaTrophy } from "react-icons/fa";
 import useGuide from "@/hooks/useGuide";
-import useHomeStatus from "@/hooks/useHome";
+import useGameStatus from "@/hooks/useResults";
+import { useGuessContext } from "@/providers/DataProvider";
 
 const Nav = () => {
   // const [showGuide, setShowGuide] = useState(false);
-  const { onClose, onOpen, isOpen } = useGuide();
-  const { onHomeOpen } = useHomeStatus();
+  const { onClose, onOpen: onOpenGuide, isOpen } = useGuide();
+  const { onOpen: onOpenModal } = useGameStatus();
+  const { status } = useGuessContext();
 
   return (
     <div className="relative">
@@ -16,7 +19,7 @@ const Nav = () => {
         <div className="circle-icon">
           <FaQuestion
             onClick={() => {
-              onOpen();
+              onOpenGuide();
             }}
           />
         </div>
@@ -38,9 +41,13 @@ const Nav = () => {
           </svg>
           Versle
         </div>
-        <div className="circle-icon">
-          <FaGear
-          onClick={() => onHomeOpen()} />
+        <div className="circle-icon cursor-pointer">
+          <FaTrophy
+          onClick={() => {
+            if (status !== "playing") {
+              onOpenModal();
+            }
+          }} />
         </div>
       </nav>
     </div>

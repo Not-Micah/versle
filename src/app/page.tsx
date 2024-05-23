@@ -1,6 +1,5 @@
 "use client";
 
-import useHomeStatus from "@/hooks/useHome";
 import RoundedButton from "@/components/RoundedButton";
 import { useRouter } from "next/navigation";
 

@@ -76,17 +76,6 @@ const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
           );
         }
       }
-      
-
-      if (guessData.some((item) => item.icon === "🏆")) {
-        onOpen();
-        setStatus("won");
-      } else if (guessNumber === 4) {
-        onOpen();
-        setStatus("lost");
-      } else {
-        setStatus("playing");
-      }
     }
   }, []);
 
@@ -99,6 +88,14 @@ const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
         JSON.stringify(guessNumber)
       );
       console.log("Passing through update effect.");
+
+      if (guessData.some((item) => item.icon === "🏆")) {
+        setStatus("won");
+      } else if (guessNumber === 4) {
+        setStatus("lost");
+      } else {
+        setStatus("playing");
+      }
     }
   }, [guessData, guessNumber]);
 
