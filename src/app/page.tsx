@@ -30,7 +30,7 @@ const Home = () => {
         ></div>
         <div
           className="w-[800px] h-[800px] bg-gray-500 rounded-full absolute
-      top-[800px] left-1/2 transform -translate-x-1/2 
+      top-[720px] left-1/2 transform -translate-x-1/2 
       opacity-10
       "
         ></div>
