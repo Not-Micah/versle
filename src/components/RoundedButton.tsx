@@ -12,7 +12,7 @@ interface RoundedButtonProps {
 const RoundedButton: React.FC<RoundedButtonProps> = ({ children, className, onClick }) => {
   return (
     <button
-    className={twMerge(className, `bg-black/80 text-white font-semibold px-7 py-3 rounded-full uppercase w-full text-2xl`)}
+    className={twMerge(className, `bg-black/80 text-white font-semibold px-4 py-3 rounded-full uppercase w-full text-xl`)}
     onClick={onClick}>
         {children}
     </button>
