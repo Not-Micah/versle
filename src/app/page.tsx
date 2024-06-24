@@ -6,22 +6,49 @@ import { useRouter } from "next/navigation";
 const Home = () => {
   const router = useRouter();
 
+  const getCurrentDate = (): string => {
+    const date = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return date.toLocaleDateString("en-US", options);
+  };
+
+  const date = getCurrentDate();
+
   return (
-    <div className="">
-        <div className="w-full h-[100vh] flex justify-center items-center overflow-hidden max-[350px]:hidden">
-          <div className="flex flex-col justify-center items-center gap-y-6 min-w-[300px] px-5">
-            <h3 className="uppercase text-center font-semibold text-4xl tracking-wide">
+    <div className="bg-gray-600/10">
+      <div className="w-full h-[100vh] flex justify-center items-center overflow-hidden max-[350px]:hidden">
+        <div className="flex flex-col justify-center items-center gap-y-10 min-w-[300px] px-5">
+          <div className="flex flex-col gap-y-2">
+            <h3 className="uppercase text-center font-bold text-4xl tracking-wide">
               Versle!
             </h3>
-            <RoundedButton onClick={() => router.replace("./play")}>
+            <p className="text-2xl text-center">
+              Get 4 chances to guess which book the <br /> verse comes from.
+            </p>
+          </div>
+          <div className="flex flex-row gap-x-2 w-full
+          max-[500px]:flex-col max-[500px]:gap-y-2">
+            <RoundedButton
+              className="bg-transparent border-black/80 text-black/80"
+              onClick={() => router.replace("./play")}
+            >
               Play
             </RoundedButton>
             <RoundedButton>
               <a href="https://micahtid.vercel.app/">About The Dev</a>
             </RoundedButton>
           </div>
+          <div className="flex flex-col justify-center items-center">
+            <p className="text-gray-500">{date}</p>
+            <p className="text-gray-500">Built by Micah Tid</p>
+          </div>
         </div>
-      <div className="min-[350px]:hidden px-3">
+      </div>
+      <div className="min-[350px]:hidden px-3 bg-white">
         Device too small to display.
       </div>
     </div>
