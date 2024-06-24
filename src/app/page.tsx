@@ -23,10 +23,10 @@ const Home = () => {
       <div className="w-full h-[100vh] flex justify-center items-center overflow-hidden max-[350px]:hidden">
         <div className="flex flex-col justify-center items-center gap-y-10 min-w-[300px] px-5">
           <div className="flex flex-col gap-y-2">
-            <h3 className="uppercase text-center font-bold text-4xl tracking-wide">
+            <h3 className="uppercase text-center font-bold dynamic-text-xl tracking-wide">
               Versle!
             </h3>
-            <p className="text-2xl text-center">
+            <p className="dynamic-text-lg text-center">
               Get 4 chances to guess which book the <br /> verse comes from.
             </p>
           </div>
@@ -43,8 +43,8 @@ const Home = () => {
             </RoundedButton>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <p className="text-gray-500">{date}</p>
-            <p className="text-gray-500">Built by Micah Tid</p>
+            <p className="text-gray-500 dynamic-text-sm">{date}</p>
+            <p className="text-gray-500 dynamic-text-sm">Built by Micah Tid</p>
           </div>
         </div>
       </div>

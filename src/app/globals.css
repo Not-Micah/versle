@@ -34,7 +34,7 @@ animation: fade-in 0.5s ease forwards;
 }
 
 .dynamic-text-xl {
-@apply text-4xl max-[500px]:text-2xl 
+@apply text-4xl max-[500px]:text-3xl 
 }
 
 .dynamic-text-lg {
@@ -43,6 +43,10 @@ animation: fade-in 0.5s ease forwards;
 
 .dynamic-text-md {
 @apply text-lg max-[500px]:text-base
+}
+
+.dynamic-text-sm {
+  @apply text-base max-[500px]:text-sm
 }
 
 /* ////////////////////// */
