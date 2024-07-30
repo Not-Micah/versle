@@ -15,7 +15,7 @@ const getDailyVerse = async () => {
     }
 
       // Sending request to local API endpoint
-      await fetch("http://localhost:3000/api/counter", {
+      await fetch("https://versle.vercel.app/api/counter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
