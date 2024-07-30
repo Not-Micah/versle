@@ -39,7 +39,7 @@ const Home = () => {
               Play
             </RoundedButton>
             <RoundedButton>
-              <a href="https://micahtid.vercel.app/">About The Dev</a>
+              <a href="https://micahdev.vercel.app/">About The Dev</a>
             </RoundedButton>
           </div>
           <div className="flex flex-col justify-center items-center">

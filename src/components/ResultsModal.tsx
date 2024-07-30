@@ -78,7 +78,7 @@ const ResultsModal = () => {
               onClick={() => {navigator.clipboard.writeText(emojiBoard)}}
               className="text-lg px-4 py-2 font-semibold uppercase bg-gray-300 rounded-full mt-6
                outline-none shadow-sm"
-              >Click to share!</button>
+              >Click to copy!</button>
             </div>  
         </Modal>
     )

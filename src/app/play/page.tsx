@@ -14,9 +14,20 @@ const getDailyVerse = async () => {
       throw new Error("Failed to fetch!");
     }
 
+      // Sending request to local API endpoint
+      await fetch("http://localhost:3000/api/counter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ plays: 1 }),
+      });
+      ////////////////////////////////////////
+
     return res.json();
+
   } catch (error) {
-    // console.log(error);
+    console.log(error);
   }
 };
 
