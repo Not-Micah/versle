@@ -18,7 +18,7 @@ const getDailyVerse = async () => {
   try {
     //http://localhost:3000/api/verses
     //https://versle.vercel.app/api/verses
-    const res = await fetch("http://localhost:3001/api/verses", {
+    const res = await fetch("https://versle.vercel.app/api/verses", {
       cache: "no-store",
     });
 
@@ -26,13 +26,13 @@ const getDailyVerse = async () => {
       throw new Error("Failed to fetch!");
     }
 
-    // await fetch("https://versle.vercel.app/api/counter", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ plays: 1 }),
-    // });
+    await fetch("https://versle.vercel.app/api/counter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ plays: 1 }),
+    });
 
     return res.json();
   } catch (error) {
