@@ -90,7 +90,7 @@ const ResultsModal = () => {
       {activeState == "daily" ? (
         <div className="flex flex-col justify-start items-center w-full gap-y-4">
           <p className="text-center">
-            {status === "lost" ? "Uh oh!" : "Good job!"} Today's verse comes
+            {status === "lost" ? "Uh oh!" : "Good job!"} Today&apos;s verse comes
             from <br /> {location}. Play again tomorrow!
           </p>
           <div className="flex flex-col gap-y-3">
