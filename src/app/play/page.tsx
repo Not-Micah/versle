@@ -3,59 +3,19 @@ import Nav from "@/components/Nav";
 import Verse from "@/components/Verse";
 import GuessSection from "@/components/GuessSection";
 
-const getDailyVerse = async () => {
-  try {
-    // https://versle.vercel.app/api/verses
-    const res = await fetch("https://versle.vercel.app/api/verses", {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch!");
-    }
-
-      // Sending request to local API endpoint
-      await fetch("https://versle.vercel.app/api/counter", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ plays: 1 }),
-      });
-      ////////////////////////////////////////
-
-    return res.json();
-
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const Play = async () => {
-  try {
-    const { verse, book, location } = await getDailyVerse();
-
-    return (
-      <div className="max-w-[600px] mx-auto my-8">
-        <div className="max-[350px]:hidden">
-          <Nav />
-          <Verse verse={verse} />
-          <GuessSection book={book} location={location} />
-        </div>
-        <div className="min-[350px]:hidden px-3">
-          Device too small to display.
-        </div>
+  return (
+    <div className="max-w-[600px] mx-auto my-8">
+      <div className="max-[350px]:hidden">
+        <Nav />
+        <Verse />
+        <GuessSection />
       </div>
-    );
-  } catch (e) {
-    return (
-      <div className="w-[100vw] h-[100vh] flex justify-center items-center">
-        <h3 className="max-w-[200px] textl-xl text-center">
-          It seems there was an error...
-        </h3>
+      <div className="min-[350px]:hidden px-3">
+        Device too small to display.
       </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default Play;

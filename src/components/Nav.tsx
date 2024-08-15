@@ -12,7 +12,6 @@ const Nav = () => {
   const { onClose, onOpen: onOpenGuide, isOpen } = useGuide();
   const { onOpen: onOpenModal } = useGameStatus();
   const { status } = useGuessContext();
-
   return (
     <div className="relative">
       <nav className="flex flex-row items-center justify-between mx-6">

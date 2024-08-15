@@ -50,7 +50,7 @@ const GuessedTile = ({
 
   return (
     <div className="grid grid-cols-3 bg-light-gray generic-tile gap-2 overflow-hidden">
-      <p className="dynamic-text-lg overflow-x-clip mr-2">{guess}</p>
+      <p className="dynamic-text-lg overflow-x-clip mr-2 text-nowrap overflow-ellipsis">{guess}</p>
       <div className="flex flex-row justify-start items-center dynamic-square-spacing">
         {squares.map((_, index) => (
           <div

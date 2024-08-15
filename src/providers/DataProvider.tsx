@@ -1,7 +1,6 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import useGameStatus from "@/hooks/useResults";
 
 interface GuessData {
   guess: string;
@@ -27,8 +26,6 @@ interface GuessProviderContext {
 }
 
 const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
-  const { isOpen, onOpen } = useGameStatus();
-
   const emptyData: GuessData[] = [
     { guess: "", percentage: 0, icon: "" },
     { guess: "", percentage: 0, icon: "" },
@@ -36,10 +33,10 @@ const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
     { guess: "", percentage: 0, icon: "" },
   ];
 
+  // Initializing all hooks
   const [guessData, setGuessData] = useState<GuessData[]>(emptyData);
   const [guessNumber, setGuessNumber] = useState<number>(0);
   const [currentGuess, setCurrentGuess] = useState<string>("");
-
   const [status, setStatus] = useState<string>("playing");
 
   useEffect(() => {
@@ -50,9 +47,8 @@ const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
 
     const lastPlayed = window.localStorage.getItem("VERSLE_LAST_DATE");
 
+    // If the user has not played today
     if (!lastPlayed || JSON.parse(lastPlayed) !== formattedDate) {
-      console.log("This is the reason of your problems");
-
       setGuessNumber(0);
       setGuessData(emptyData);
       window.localStorage.setItem("VERSLE_GUESSES", JSON.stringify(""));
@@ -61,7 +57,7 @@ const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
         "VERSLE_LAST_DATE",
         JSON.stringify(formattedDate)
       );
-    } else {
+    } else {  // If the user has already started/completed playing today
       const tempGuesses = window.localStorage.getItem("VERSLE_GUESSES");
       const tempGuessNumber = window.localStorage.getItem("VERLSE_GUESS_NUMBER");
 
@@ -80,14 +76,15 @@ const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // ERROR FIX P2 Not directly comparing guessData with emptyData due to type issues 'guessData[0].guess !== ""' 
+    // Updating values of localStorage when hooks change
+    // ERROR FIX P2 
+    // Not directly comparing guessData with emptyData due to type issues 'guessData[0].guess !== ""' 
     if (guessData && guessData[0].guess !== "") {
       window.localStorage.setItem("VERSLE_GUESSES", JSON.stringify(guessData));
       window.localStorage.setItem(
         "VERLSE_GUESS_NUMBER",
         JSON.stringify(guessNumber)
       );
-      console.log("Passing through update effect.");
 
       if (guessData.some((item) => item.icon === "🏆")) {
         setStatus("won");
@@ -99,6 +96,7 @@ const GuessProvider: React.FC<GuessProviderContext> = ({ children }) => {
     }
   }, [guessData, guessNumber]);
 
+  ///////////////////////
   const value = {
     guessData,
     guessNumber,
@@ -120,7 +118,7 @@ const useGuessContext = () => {
   if (context === undefined) {
     throw new Error("useGuessContext must be used within a GuessProvider");
   }
-  return context;
+  return context; 
 };
 
 export { GuessProvider, useGuessContext };

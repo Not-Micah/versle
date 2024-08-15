@@ -2,8 +2,9 @@
 
 import React from "react";
 import AutoComplete from "./AutoComplete";
-import { bibleBooks, guessType } from "@/data";
+import { bibleBooks } from "@/data";
 import { useGuessContext } from "@/providers/DataProvider";
+import { useStreakContext } from "@/providers/StreakProvider";
 import useGameStatus from "@/hooks/useResults";
 
 const EntryTile = ({ correctBook }: { correctBook: string }) => {
@@ -18,7 +19,8 @@ const EntryTile = ({ correctBook }: { correctBook: string }) => {
     setGuessNumber,
   } = useGuessContext();
 
-  const { onOpen, onClose } = useGameStatus()
+  const { onOpen } = useGameStatus();
+  const { wins, losses, setWins, setLosses } = useStreakContext();
 
   const submitEntry = () => {
     if (
@@ -57,11 +59,13 @@ const EntryTile = ({ correctBook }: { correctBook: string }) => {
       ) {
         setTimeout(() => {
           setStatus("lost");
+          setLosses(losses+1);
           onOpen();
         }, 5000);
       } else if (guessData.some((item) => item.guess === correctBook)) {
         setTimeout(() => {
           setStatus("won");
+          setWins(wins+1);
           onOpen();
         }, 5000);
       }

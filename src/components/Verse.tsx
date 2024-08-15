@@ -1,11 +1,12 @@
-import React from 'react'
+"use client";
 
-const Verse = ({ verse } : { verse : string }) => {
-  const verseParts = Array.from({ length: 5 }, (_, index) => {
-    const startIndex = Math.floor((verse.length / 5) * index);
-    const endIndex = Math.floor((verse.length / 5) * (index + 1));
-    return verse.slice(startIndex, endIndex);
-  });
+import { useVerseContext } from "@/providers/VerseProvider";
+
+const Verse = () => {
+  
+  const { verse } = useVerseContext();
+
+  console.log(verse)
 
   return (
     <section className="flex justify-center items-center mx-6 my-16 text-center">
