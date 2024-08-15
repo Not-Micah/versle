@@ -15,10 +15,6 @@
   @apply rounded-md px-4 py-2 border-gray-700 max-[500px]:py-3
 }
 
-.suggestion-tile {
-  @apply rounded-md
-}
-
 /* VANILLA CSS WARNING? */
 @keyframes fade-in {
   from {

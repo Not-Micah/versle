@@ -6,12 +6,13 @@ import EmptyTile from "@/components/EmptyTile";
 import CountTile from "./CountTile";
 import GuessedTile from "./GuessedTile";
 import { guessType } from "@/data";
-import { useState, useEffect } from "react";
+import { useVerseContext } from "@/providers/VerseProvider";
 
 import { useGuessContext } from "@/providers/DataProvider";
 
-const GuessSection = ({ book, location }: { book: string, location: string }) => {
-  const { guessData, status } = useGuessContext();
+const GuessSection = () => {
+  const { guessData } = useGuessContext();
+  const { book }  = useVerseContext();
 
   return (
     <section className="relative">

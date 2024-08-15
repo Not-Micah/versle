@@ -15,6 +15,7 @@ const AutoComplete = ({ options, editCurrentGuess } : { options:string[], editCu
     };
   
     document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside); // Clean up event listener
   }, []);
   
 
@@ -46,12 +47,15 @@ const AutoComplete = ({ options, editCurrentGuess } : { options:string[], editCu
         className="generic-tile bg-dark-gray text-white outline-none placeholder-white w-full dynamic-text-md"
       />
       {suggestions.length > 0 && (
-        <ul className="absolute z-10 bg-gray-100 top-[42px] mt-2 suggestion-tile rounded-md w-full max-[499px]:mt-3">
+        <ul className="absolute z-10 bg-[#3D3C35] rounded-md w-full max-h-[300px] overflow-y-auto shadow-sm
+        flex flex-col gap-1"
+        style={{ bottom: '50px'}}>
           {suggestions.map((suggestion, index) => (
             <li
               key={index}
               onClick={() => handleSelect(suggestion)}
-              className="px-4 py-2 cursor-pointer hover:bg-gray-100 rounded-md dynamic-text-md"
+              className="cursor-pointer text-white rounded-md dynamic-text-md
+              px-4 py-2 max-[500px]:py-3"
             >
               {suggestion}
             </li>
@@ -61,6 +65,5 @@ const AutoComplete = ({ options, editCurrentGuess } : { options:string[], editCu
     </div>
   );
 };
-
 
 export default AutoComplete;
