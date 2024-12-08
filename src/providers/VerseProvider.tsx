@@ -26,6 +26,8 @@ const getDailyVerse = async () => {
       throw new Error("Failed to fetch!");
     }
 
+    //http://localhost:3000/api/counter
+    //https://versle.vercel.app/api/counter
     await fetch("https://versle.vercel.app/api/counter", {
       method: "POST",
       headers: {

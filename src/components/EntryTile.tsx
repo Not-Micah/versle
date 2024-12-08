@@ -22,6 +22,9 @@ const EntryTile = ({ correctBook }: { correctBook: string }) => {
   const { onOpen } = useGameStatus();
   const { wins, losses, setWins, setLosses } = useStreakContext();
 
+  console.log(correctBook, currentGuess)
+  console.log(guessData)
+
   const submitEntry = () => {
     if (
       bibleBooks.includes(currentGuess) &&
@@ -39,8 +42,8 @@ const EntryTile = ({ correctBook }: { correctBook: string }) => {
 
       //////////
       const updatedPercentageDifference =
-        100 -
-        Math.round((Math.abs(correctIndex - guessIndex) / correctIndex) * 100);
+      100 -
+      Math.round((Math.abs(correctIndex - guessIndex) / bibleBooks.length) * 100);    
       updatedList[guessNumber].percentage = updatedPercentageDifference;
 
       //////////
