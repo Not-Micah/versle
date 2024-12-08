@@ -22,9 +22,6 @@ const EntryTile = ({ correctBook }: { correctBook: string }) => {
   const { onOpen } = useGameStatus();
   const { wins, losses, setWins, setLosses } = useStreakContext();
 
-  console.log(correctBook, currentGuess)
-  console.log(guessData)
-
   const submitEntry = () => {
     if (
       bibleBooks.includes(currentGuess) &&
@@ -46,14 +43,16 @@ const EntryTile = ({ correctBook }: { correctBook: string }) => {
       Math.round((Math.abs(correctIndex - guessIndex) / bibleBooks.length) * 100);    
       updatedList[guessNumber].percentage = updatedPercentageDifference;
 
+      console.log("Guess Index ", guessIndex, "Correct Index", correctIndex)
+
       //////////
-      if (correctIndex - guessIndex > 0) {
-        updatedList[guessNumber].icon = "➡️";
-      } else if (correctIndex - guessIndex < 0) {
-        updatedList[guessNumber].icon = "⬅️";
+      if (guessIndex < correctIndex) {
+        updatedList[guessNumber].icon = "➡️"; 
+      } else if (guessIndex > correctIndex) {
+        updatedList[guessNumber].icon = "⬅️"; 
       } else {
-        updatedList[guessNumber].icon = "🏆";
-      }
+        updatedList[guessNumber].icon = "🏆"; 
+      }      
 
       // //////////
       if (
