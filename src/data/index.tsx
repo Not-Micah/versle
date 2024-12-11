@@ -17,7 +17,7 @@ export const bibleBooks = [
     "Nehemiah",
     "Esther",
     "Job",
-    "Psalms",
+    "Psalm",
     "Proverbs",
     "Ecclesiastes",
     "Song of Solomon",
