@@ -6,7 +6,7 @@ const Verse = () => {
   
   const { verse } = useVerseContext();
 
-  console.log(verse)
+  console.log(verse);
 
   return (
     <section className="flex justify-center items-center mx-6 my-16 text-center">

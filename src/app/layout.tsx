@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+
+import { Analytics } from '@vercel/analytics/next';
+
 import ModalProvider from "@/providers/ModalProvider";
 import Providers from "@/providers/Providers";
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +26,7 @@ export default function RootLayout({
             {children}
             <ModalProvider />
           </Providers>
+          <Analytics />
       </body>
     </html>
   );
